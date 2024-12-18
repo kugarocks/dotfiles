@@ -1,3 +1,0 @@
-[submodule "hammerspoon"]
-	path = hammerspoon
-	url = git@github.com:kugarocks/dotfiles-hammerspoon.git
