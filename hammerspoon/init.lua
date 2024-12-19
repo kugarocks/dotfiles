@@ -34,3 +34,7 @@ spoon.Cursor:overrideHotKeys({
     [bundleIds.cursor] = overrideHotKeys,
 })
 spoon.Cursor:start()
+
+-- ControlShift
+hs.loadSpoon("ControlShift")
+spoon.ControlShift:start()
