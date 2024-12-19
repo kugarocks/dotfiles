@@ -45,11 +45,10 @@ function obj:handleKeyEvent(event)
     local keyCode = event:getKeyCode()
     local char = hs.keycodes.map[keyCode]
     
-    -- Check if ctrl key is pressed
-    if flags.ctrl then
+    -- Check if only ctrl key is pressed (no other modifiers)
+    if flags.ctrl and next(flags, next(flags)) == nil then
         -- Check if it's a mapped key
         if obj.keyMapping[char] then
-            -- Directly output the special character instead of simulating keystrokes
             hs.eventtap.keyStrokes(obj.keyMapping[char])
             return true
         end
