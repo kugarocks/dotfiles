@@ -106,11 +106,11 @@ spoon.Cursor:start()
 
 ### Other Mappings
 
-| Shortcut | Mapping |
-|----------|---------|
-| `ctrl`+`enter` | `shift`+`enter` |
-| `ctrl`+`cmd`+`[` | `shift`+`cmd`+`[` |
-| `ctrl`+`cmd`+`]` | `shift`+`cmd`+`]` |
+| Shortcut | Mapping | Status |
+|----------|---------|--------|
+| `ctrl`+`enter` | `shift`+`enter` | ✅ |
+| `ctrl`+`cmd`+`[` | `shift`+`cmd`+`[` | ❌ |
+| `ctrl`+`cmd`+`]` | `shift`+`cmd`+`]` | ❌ |
 
 ```lua
 -- Ctrl+Enter to Shift+Enter mapping
@@ -123,16 +123,25 @@ hs.eventtap.new({ hs.eventtap.event.types.keyDown }, function(event)
         return false
     end
 
-    -- Ctrl+Cmd+[ and Ctrl+Cmd+] to Shift+Cmd+[ and Shift+Cmd+]
+    return false
+end):start()
+```
+
+```lua
+-- Ctrl+Cmd+[ and Ctrl+Cmd+] to Shift+Cmd+[ and Shift+Cmd+]
+-- This is not working when press many times
+hs.eventtap.new({ hs.eventtap.event.types.keyDown }, function(event)
+    local flags = event:getFlags()
+    local keyCode = event:getKeyCode()
+
     if flags.ctrl and flags.cmd and (keyCode == 33 or keyCode == 30) then
-        print("Remapping brackets combination") 
+        print("Remapping brackets combination")
         event:setFlags({shift = true, cmd = true, ctrl = false})
         return false
     end
 
     return false
 end):start()
-
 ```
 
 ## tmux
