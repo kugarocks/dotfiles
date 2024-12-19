@@ -1,7 +1,17 @@
 --- === ControlShift ===
 ---
---- Use Ctrl key with number row keys to type their corresponding shift characters.
---- For example: Ctrl+1 types !, Ctrl+2 types @, etc.
+--- Use Ctrl key with keys to type their corresponding mapped characters.
+--- Mapping can be customized using setKeyMapping() function.
+---
+--- Example usage:
+--- ```lua
+--- hs.loadSpoon("ControlShift")
+--- spoon.ControlShift:setKeyMapping({
+---     ["1"] = "!",
+---     ["2"] = "@"
+--- })
+--- spoon.ControlShift:start()
+--- ```
 
 local obj = {}
 obj.__index = obj
@@ -18,21 +28,12 @@ obj.eventTap = nil
 obj.hotkeys = {}
 
 -- Key mapping for special characters
-obj.keyMapping = {
-    ["`"] = "~",
-    ["1"] = "!",
-    ["2"] = "@", 
-    ["3"] = "#",
-    ["4"] = "$",
-    ["5"] = "%",
-    ["6"] = "^",
-    ["7"] = "&",
-    ["8"] = "*",
-    ["9"] = "(",
-    ["0"] = ")",
-    ["-"] = "_",
-    ["="] = "+"
-}
+obj.keyMapping = {}
+
+function obj:setKeyMapping(mapping)
+    self.keyMapping = mapping
+    return self
+end
 
 function obj:bindHotkeys(mapping)
     self.hotkeys = mapping
