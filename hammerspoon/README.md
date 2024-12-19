@@ -39,7 +39,7 @@ spoon.ControlShift:start()
 
 | Shortcut | Output |
 |----------|--------|
-| `ctrl` + `\`` | ~ |
+| `ctrl` + `` ` `` | ~ |
 | `ctrl` + `num` | !@#$%^&*() |
 | `ctrl` + `-` | _ |
 | `ctrl` + `=` | + |
