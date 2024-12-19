@@ -104,6 +104,24 @@ spoon.Cursor:overrideHotKeys({
 spoon.Cursor:start()
 ```
 
+### Other Mappings
+
+Control+Enter to Shift+Enter.
+
+```lua
+local ctrlEnterTap = hs.eventtap.new({ hs.eventtap.event.types.keyDown }, function(event)
+    local flags = event:getFlags()
+    local keyCode = event:getKeyCode()
+    
+    if flags.ctrl and keyCode == 36 then
+        event:setFlags({shift = true, ctrl = false})
+        return false
+    end
+    return false
+end)
+ctrlEnterTap:start()
+```
+
 ## tmux
 
 tmux is your best friend.
