@@ -64,7 +64,7 @@ spoon.ControlShift:setKeyMapping({
 spoon.ControlShift:start()
 
 -- Ctrl+Enter to Shift+Enter mapping
-local ctrlEnterTap = hs.eventtap.new({ hs.eventtap.event.types.keyDown }, function(event)
+hs.eventtap.new({ hs.eventtap.event.types.keyDown }, function(event)
     local flags = event:getFlags()
     local keyCode = event:getKeyCode()
     
@@ -72,6 +72,13 @@ local ctrlEnterTap = hs.eventtap.new({ hs.eventtap.event.types.keyDown }, functi
         event:setFlags({shift = true, ctrl = false})
         return false
     end
+
+    -- Ctrl+Cmd+[ and Ctrl+Cmd+] to Shift+Cmd+[ and Shift+Cmd+]
+    if flags.ctrl and flags.cmd and (keyCode == 33 or keyCode == 30) then
+        print("Remapping brackets combination") 
+        event:setFlags({shift = true, cmd = true, ctrl = false})
+        return false
+    end
+
     return false
-end)
-ctrlEnterTap:start()
+end):start()

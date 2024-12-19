@@ -44,7 +44,7 @@ function obj:handleKeyEvent(event)
     local flags = event:getFlags()
     local keyCode = event:getKeyCode()
     local char = hs.keycodes.map[keyCode]
-    
+
     -- Check if only ctrl key is pressed (no other modifiers)
     if flags.ctrl and next(flags, next(flags)) == nil then
         -- Check if it's a mapped key
