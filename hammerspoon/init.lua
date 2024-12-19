@@ -62,3 +62,16 @@ spoon.ControlShift:setKeyMapping({
     ["/"] = "?",
 })
 spoon.ControlShift:start()
+
+-- Ctrl+Enter to Shift+Enter mapping
+local ctrlEnterTap = hs.eventtap.new({ hs.eventtap.event.types.keyDown }, function(event)
+    local flags = event:getFlags()
+    local keyCode = event:getKeyCode()
+    
+    if flags.ctrl and keyCode == 36 then
+        event:setFlags({shift = true, ctrl = false})
+        return false
+    end
+    return false
+end)
+ctrlEnterTap:start()
