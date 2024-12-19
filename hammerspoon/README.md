@@ -26,6 +26,24 @@ spoon.ControlEscape:setCancelDelay(0.5)
 spoon.ControlEscape:start()
 ```
 
+## ControlShift.spoon
+
+Use Ctrl with number row keys to type their corresponding shift characters.
+This spoon works best when your `capslock` key is mapped to `control`.
+Using `capslock` instead of `shift` can save your pinky.
+
+```lua
+hs.loadSpoon("ControlShift")
+spoon.ControlShift:start()
+```
+
+| Shortcut | Output |
+|----------|--------|
+| `ctrl` + `\`` | ~ |
+| `ctrl` + `num` | !@#$%^&*() |
+| `ctrl` + `-` | _ |
+| `ctrl` + `=` | + |
+
 ## Cursor
 
 Get the bundle id of the app you want to override.
@@ -67,29 +85,3 @@ spoon.Cursor:overrideHotKeys({
 })
 spoon.Cursor:start()
 ```
-
-## ControlShift.spoon
-
-Use Ctrl with number row keys to type their corresponding shift characters.
-This spoon works best when your `capslock` key is mapped to `control`.
-Using `capslock` instead of `shift` can save your pinky.
-
-```lua
-hs.loadSpoon("ControlShift")
-spoon.ControlShift:start()
-```
-
-| Shortcut | Output |
-|----------|--------|
-| `ctrl + 1` | ! |
-| `ctrl + 2` | @ |
-| `ctrl + 3` | # |
-| `ctrl + 4` | $ |
-| `ctrl + 5` | % |
-| `ctrl + 6` | ^ |
-| `ctrl + 7` | & |
-| `ctrl + 8` | * |
-| `ctrl + 9` | ( |
-| `ctrl + 0` | ) |
-| `ctrl + -` | _ |
-| `ctrl + =` | + |
