@@ -104,12 +104,13 @@ spoon.Cursor:start()
 
 | Shortcut | Mapping | Status |
 |----------|---------|--------|
-| `ctrl`+`enter` | `shift`+`enter` | ✅ |
+| `ctrl`+`enter` | `shift`+`enter` | ❌ |
 | `ctrl`+`cmd`+`[` | `shift`+`cmd`+`[` | ❌ |
 | `ctrl`+`cmd`+`]` | `shift`+`cmd`+`]` | ❌ |
 
 ```lua
 -- Ctrl+Enter to Shift+Enter mapping
+-- This is not working after a while
 hs.eventtap.new({ hs.eventtap.event.types.keyDown }, function(event)
     local flags = event:getFlags()
     local keyCode = event:getKeyCode()

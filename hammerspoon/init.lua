@@ -46,17 +46,18 @@ spoon.ControlShift:bindHotkeys({
 spoon.ControlShift:start()
 
 -- Ctrl+Enter to Shift+Enter mapping
-hs.eventtap.new({ hs.eventtap.event.types.keyDown }, function(event)
-    local flags = event:getFlags()
-    local keyCode = event:getKeyCode()
+-- This is not working after a while
+-- hs.eventtap.new({ hs.eventtap.event.types.keyDown }, function(event)
+--     local flags = event:getFlags()
+--     local keyCode = event:getKeyCode()
     
-    if flags.ctrl and keyCode == 36 then
-        event:setFlags({shift = true, ctrl = false})
-        return false
-    end
+--     if flags.ctrl and keyCode == 36 then
+--         event:setFlags({shift = true, ctrl = false})
+--         return false
+--     end
 
-    return false
-end):start()
+--     return false
+-- end):start()
 
 -- Ctrl+Cmd+[ and Ctrl+Cmd+] to Shift+Cmd+[ and Shift+Cmd+]
 -- This is not working when press many times
@@ -68,6 +69,6 @@ end):start()
 --         event:setFlags({shift = true, cmd = true, ctrl = false})
 --         return false
 --     end
---
+
 --     return false
 -- end):start()
