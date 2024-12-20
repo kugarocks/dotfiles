@@ -39,7 +39,7 @@ spoon.Cursor:start()
 -- $^: vim lineTail/lineHead
 -- %": tmux splitVertical/splitHorizontal
 hs.loadSpoon("ControlShift")
-spoon.ControlShift:setKeys({
+spoon.ControlShift:bindHotkeys({
     '`', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0',
     '-', '=', '[', ']', '\\', ';', '\'', ',', '.', '/'
 })

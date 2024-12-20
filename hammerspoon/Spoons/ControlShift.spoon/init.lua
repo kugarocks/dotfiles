@@ -1,12 +1,12 @@
 --- === ControlShift ===
 ---
 --- Use Ctrl key with keys to type their Shift-modified characters.
---- Keys can be configured using setKeys() function.
+--- Keys can be configured using bindHotkeys() function.
 ---
 --- Example usage:
 --- ```lua
 --- hs.loadSpoon("ControlShift")
---- spoon.ControlShift:setKeys({
+--- spoon.ControlShift:bindHotkeys({
 ---     '1', '2', '3',  -- Will convert Ctrl+1 to Shift+1 (!)
 ---     '[', ']'        -- Will convert Ctrl+[ to Shift+[ ({)
 --- })
@@ -28,7 +28,7 @@ obj.eventTap = nil
 obj.hotkeys = {}
 
 -- Set of keys that should be handled
-obj.activeKeys = {}
+obj.bindHotkeys = {}
 
 -- Key mapping for special characters
 obj.keyMapping = {}
@@ -58,20 +58,15 @@ local keyCodeMap = {
     ['/'] = 0x2C,
 }
 
-function obj:setKeys(keys)
-    self.activeKeys = {}
+function obj:bindHotkeys(keys)
+    self.bindHotkeys = {}
     -- Convert user input key names to keycodes
     for _, key in ipairs(keys) do
         local keyCode = keyCodeMap[key]
         if keyCode then
-            self.activeKeys[keyCode] = true
+            self.bindHotkeys[keyCode] = true
         end
     end
-    return self
-end
-
-function obj:bindHotkeys(mapping)
-    self.hotkeys = mapping
     return self
 end
 
@@ -80,7 +75,7 @@ function obj:handleKeyEvent(event)
     local keyCode = event:getKeyCode()
 
     if flags.ctrl and next(flags, next(flags)) == nil then
-        if obj.activeKeys[keyCode] then
+        if obj.bindHotkeys[keyCode] then
             event:setFlags({shift = true})
             return false
         end
