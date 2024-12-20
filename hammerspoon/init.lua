@@ -36,30 +36,12 @@ spoon.Cursor:overrideHotKeys({
 spoon.Cursor:start()
 
 -- ControlShift
--- $/^: vim works (OH YEAH)
+-- $^: vim lineTail/lineHead
+-- %": tmux splitVertical/splitHorizontal
 hs.loadSpoon("ControlShift")
-spoon.ControlShift:setKeyMapping({
-    ["`"] = "~",
-    ["1"] = "!",
-    ["2"] = "@",
-    ["3"] = "#",
-    ["4"] = "$",
-    ["5"] = "%",
-    ["6"] = "^",
-    ["7"] = "&",
-    ["8"] = "*",
-    ["9"] = "(",
-    ["0"] = ")",
-    ["-"] = "_",
-    ["="] = "+",
-    ["["] = "{",
-    ["]"] = "}",
-    ["\\"] = "|",
-    [";"] = ":",
-    ["'"] = "\"",
-    [","] = "<",
-    ["."] = ">",
-    ["/"] = "?",
+spoon.ControlShift:setKeys({
+    '`', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0',
+    '-', '=', '[', ']', '\\', ';', '\'', ',', '.', '/'
 })
 spoon.ControlShift:start()
 
@@ -83,7 +65,6 @@ end):start()
 --     local keyCode = event:getKeyCode()
 
 --     if flags.ctrl and flags.cmd and (keyCode == 33 or keyCode == 30) then
---         print("Remapping brackets combination")
 --         event:setFlags({shift = true, cmd = true, ctrl = false})
 --         return false
 --     end

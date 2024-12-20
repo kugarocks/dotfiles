@@ -47,17 +47,13 @@ Using `capslock` instead of `shift` can save your pinky.
 | `ctrl` + `...` | ... |
 
 ```lua
+-- ControlShift
+-- $^: vim lineTail/lineHead
+-- %": tmux splitVertical/splitHorizontal
 hs.loadSpoon("ControlShift")
--- Set custom key mappings
--- $/^: vim works (OH YEAH)
-spoon.ControlShift:setKeyMapping({
-    ["`"] = "~",
-    ["1"] = "!",
-    ["2"] = "@", 
-    ["3"] = "#",
-    ["4"] = "$",
-    ["5"] = "%",
-    ["6"] = "^",
+spoon.ControlShift:setKeys({
+    '`', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0',
+    '-', '=', '[', ']', '\\', ';', '\'', ',', '.', '/'
 })
 spoon.ControlShift:start()
 ```
@@ -135,7 +131,6 @@ hs.eventtap.new({ hs.eventtap.event.types.keyDown }, function(event)
     local keyCode = event:getKeyCode()
 
     if flags.ctrl and flags.cmd and (keyCode == 33 or keyCode == 30) then
-        print("Remapping brackets combination")
         event:setFlags({shift = true, cmd = true, ctrl = false})
         return false
     end
