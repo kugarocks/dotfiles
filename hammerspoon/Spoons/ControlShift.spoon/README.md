@@ -11,17 +11,13 @@ Using `capslock` instead of `shift` can save your pinky.
 | `ctrl` + `...` | ... |
 
 ```lua
+-- ControlShift
+-- $^: vim lineTail/lineHead
+-- %": tmux splitVertical/splitHorizontal
 hs.loadSpoon("ControlShift")
--- Set custom key mappings
--- $/^: vim works (OH YEAH)
-spoon.ControlShift:setKeyMapping({
-    ["`"] = "~",
-    ["1"] = "!",
-    ["2"] = "@", 
-    ["3"] = "#",
-    ["4"] = "$",
-    ["5"] = "%",
-    ["6"] = "^",
+spoon.ControlShift:bindHotkeys({
+    '`', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0',
+    '-', '=', '[', ']', '\\', ';', '\'', ',', '.', '/'
 })
 spoon.ControlShift:start()
 ```

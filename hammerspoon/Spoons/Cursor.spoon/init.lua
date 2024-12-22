@@ -9,7 +9,7 @@ obj.__index = obj
 obj.name = "Cursor"
 obj.version = "1.0"
 obj.author = "kugarocks"
-obj.homepage = "https://github.com/kugarocks/hammerspoon"
+obj.homepage = "https://github.com/kugarocks/dotfiles"
 obj.license = "MIT - https://opensource.org/licenses/MIT"
 
 -- Internal variables
