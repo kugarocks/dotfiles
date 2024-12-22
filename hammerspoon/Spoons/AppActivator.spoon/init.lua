@@ -1,8 +1,8 @@
 --- === AppActivator ===
 ---
---- A Spoon that allows you to activate/focus applications using their own hotkeys.
---- When the configured hotkey is pressed while its corresponding app is focused,
---- it will bring that app to front.
+--- A Spoon that allows you to activate applications using their own hotkeys.
+--- When the configured hotkey is pressed, the corresponding app will be brought to front.
+--- If the app is not running, it will be launched.
 
 local obj = {}
 obj.__index = obj
@@ -36,12 +36,12 @@ function obj:_generateMapKey(modifiers, key)
     return table.concat(mods, "+") .. "+" .. key
 end
 
---- AppActivator:bindHotkeys(ids)
+--- AppActivator:bindHotkeys(hotkeys)
 --- Method
 --- Configures hotkey to bundle ID mappings for application activation.
 ---
 --- Parameters:
----  * ids - A table mapping bundle IDs to their hotkey configurations
+---  * hotkeys - A table mapping bundle IDs to their hotkey configurations
 ---
 --- Example:
 ---  ```lua
@@ -50,10 +50,10 @@ end
 ---     ["com.another.app"] = {{"cmd", "shift"}, "space"}
 ---  })
 ---  ```
-function obj:bindHotkeys(ids)
+function obj:bindHotkeys(hotkeys)
     -- Create lookup table for mapping hotkey combinations to bundle IDs
     self.hotkeyToBundleIDMap = {}
-    for bundleID, keyConfig in pairs(ids) do
+    for bundleID, keyConfig in pairs(hotkeys) do
         local mapKey = self:_generateMapKey(keyConfig[1], keyConfig[2])
         self.hotkeyToBundleIDMap[mapKey] = bundleID
     end
@@ -62,9 +62,9 @@ end
 --- AppActivator:start()
 --- Method
 --- Starts monitoring keyboard events for configured hotkeys.
---- When a matching hotkey is pressed while its corresponding app is focused,
---- that app will be brought to front.
----
+--- When a matching hotkey is pressed, the corresponding app will be brought to front.
+--- If the app is not running, it will be launched.
+
 --- Returns:
 ---  * The AppActivator object
 function obj:start()
@@ -72,7 +72,7 @@ function obj:start()
         self.eventTap:stop()
     end
     
-    self.eventTap = hs.eventtap.new({hs.eventtap.event.types.flagsChanged, hs.eventtap.event.types.keyDown}, function(event)
+    self.eventTap = hs.eventtap.new({hs.eventtap.event.types.keyDown}, function(event)
         local flags = event:getFlags()
         local keyCode = event:getKeyCode()
         local pressedKey = hs.keycodes.map[keyCode]
