@@ -56,21 +56,25 @@ config.colors = {
   split = "#cccccc",
 }
 
-config.keys = {
-  --   {
-  --       key = 'p',
-  --       mods = 'CTRL',
-  --       action = wezterm.action.ToggleFullScreen,
-  --  },
+-- 添加 quick select patterns 配置
+config.quick_select_patterns = {
+  -- 匹配 k8s pod 名称模式
+  -- 通常格式为: name-hash-hash (例如: nginx-7cf9cf5f8b-j5kzq)
+  [[[\w-]+-[0-9a-f]+-[0-9a-z]+]]
+}
 
+config.keys = {
+  -- option + left/right arrow
   {key="LeftArrow", mods="OPT", action=wezterm.action{SendString="\x1bb"}},
   {key="RightArrow", mods="OPT", action=wezterm.action{SendString="\x1bf"}},
 
+  -- ctrl + shift + h/l/k/j
   {key="h", mods="CTRL|SHIFT", action=wezterm.action.ActivatePaneDirection("Left")},
   {key="l", mods="CTRL|SHIFT", action=wezterm.action.ActivatePaneDirection("Right")},
   {key="k", mods="CTRL|SHIFT", action=wezterm.action.ActivatePaneDirection("Up")},
   {key="j", mods="CTRL|SHIFT", action=wezterm.action.ActivatePaneDirection("Down")},
 
+  -- split horizontal/vertical
   {
     key = "|",
     mods = "CMD|SHIFT",
@@ -80,6 +84,13 @@ config.keys = {
     key = "-",
     mods = "CMD|SHIFT",
     action = wezterm.action.SplitVertical { domain = "CurrentPaneDomain" },
+  },
+
+  -- quick select
+  {
+    key = "f",
+    mods = "CMD",
+    action = wezterm.action.QuickSelect,
   },
 }
 
