@@ -21,6 +21,7 @@ That's why I switch Alacritty to WezTerm.
 
 ## Karabiner
 
+The reason I use Karabiner for key bindings is that it has a higher priority than any other app.
 The goal of this shortcut setup is to assign the most common functions to the easiest key combos.
 To resolve key binding conflicts, you can set conditions based on the frontmost application.
 Don't forget to save your pinky by mapping `capsLock` to `control`.
@@ -39,6 +40,11 @@ Don't forget to save your pinky by mapping `capsLock` to `control`.
 | Tab Left | `cmd`+`caps` + `[` | `cmd`+`caps` + `[` | `cmd`+`caps` + `[` |
 | Tab Right | `cmd`+`caps` + `]` | `cmd`+`caps` + `]` | `cmd`+`caps` + `]` |
 | !@#... | `caps` + `123...` | `caps` + `123...` | `caps` + `123...` |
+
+## Hammerspoon
+
+Hammerspoon is a powerful automation tool for macOS.
+I use Hammerspoon to bring Raycast to the frontmost application for Karabiner (It can't recognize Raycast).
 
 ## Alacritty
 
