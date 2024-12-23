@@ -1,12 +1,23 @@
 # dotfiles
 
-* Karabiner: Customize keyboard shortcuts.
-* Hammerspoon: Bring apps to front such as Raycast.
-* WezTerm: Quick select mode is cool.
-* Alacritty: Run cli programs such as Markdown Finder.
 * tmux: Your best friend.
-* nvim: Not VSCode.
-* p10k: Dress up your terminal.
+* Karabiner: Customize keyboard shortcuts.
+* Hammerspoon: Help Karabiner recognize special apps such as Raycast.
+* WezTerm: I love quick select mode.
+* Alacritty: Run cli programs such as Markdown Finder.
+* Markdown Finder: Copy markdown code block super fast.
+* neovim: Not VSCode.
+* powerlevel10k: Dress up your terminal.
+* Oh My Zsh: 10x developer.
+
+## tmux
+
+I need run tmux in remote server to avoid network issues.
+Also I need to run tmux locally to get used to its key bindings. There are two ways to do this.
+First, use tmux nested within tmux. To maintain consistent key bindings, you might need a plugin like [tmux-suspend](https://github.com/MunifTanjim/tmux-suspend).
+Additionally, for the inner tmux clipboard to work properly, you would need to use OSC 52 and the [set-clipboard](https://github.com/tmux/tmux/wiki/Clipboard#terminal-support---tmux-inside-tmux) option.
+For me, I prefer the second way, just use a new tab or split panes to avoid nested tmux sessions entirely.
+That's why I switch Alacritty to WezTerm.
 
 ## Karabiner
 
@@ -16,138 +27,28 @@ Don't forget to save your pinky by mapping `capsLock` to `control`.
 
 | Function | Default | Cursor | Raycast |
 |----------|----------|----------|----------|
-| Move Left | `cmd`+`h` | `cmd`+`ctrl`+`h` | `cmd`+`ctrl`+`h` |
-| Move Down | `cmd`+`j` | `cmd`+`ctrl`+`j` | `cmd`+`ctrl`+`j` |
-| Move Up | `cmd`+`k` | `cmd`+`ctrl`+`k` | `cmd`+`ctrl`+`k` |
-| Move Right | `cmd`+`l` | `cmd`+`ctrl`+`l` | `cmd`+`ctrl`+`l` |
-| Move Word Left | `cmd`+`ctrl`+`h` | - | - |
-| Move Word Right | `cmd`+`ctrl`+`l` | - | - |
+| Move Left | `cmd`+`h` | `cmd`+`caps`+`h` | `cmd`+`caps`+`h` |
+| Move Down | `cmd`+`j` | `cmd`+`caps`+`j` | `cmd`+`caps`+`j` |
+| Move Up | `cmd`+`k` | `cmd`+`caps`+`k` | `cmd`+`caps`+`k` |
+| Move Right | `cmd`+`l` | `cmd`+`caps`+`l` | `cmd`+`caps`+`l` |
+| Move Word Left | `cmd`+`caps`+`h` | - | - |
+| Move Word Right | `cmd`+`caps`+`l` | - | - |
 | Delete Char | `cmd`+`d` | `cmd`+`d` | `cmd`+`d` |
 | Delete Word | `cmd`+`s` | `cmd`+`s` | `cmd`+`s` |
-| Line Break | `ctrl`+`enter` | `ctrl`+`enter` | `ctrl`+`enter` |
+| Line Break | `caps`+`enter` | `caps`+`enter` | `caps`+`enter` |
+| Tab Left | `cmd`+`caps` + `[` | `cmd`+`caps` + `[` | `cmd`+`caps` + `[` |
+| Tab Right | `cmd`+`caps` + `]` | `cmd`+`caps` + `]` | `cmd`+`caps` + `]` |
+| !@#... | `caps` + `123...` | `caps` + `123...` | `caps` + `123...` |
 
-### ControlEscape
+## Alacritty
 
-Supercharge your `control` key. Tap it for `escape`. Hold it for `control`.
+Alacritty is super fast and well-suited to serve as a shell for command-line applications.
 
-```lua
-hs.loadSpoon('ControlEscape')
-spoon.ControlEscape:setCancelDelay(0.5)
-spoon.ControlEscape:start()
-```
+## Markdown Finder
 
-### ControlShift
+[Markdown Finder](https://github.com/kugarocks/markdown-finder) is a tool for quickly locating and copying code snippets in Markdown files.
 
-Map special characters to Ctrl + key combinations for easier typing.
-This spoon works best when your `capslock` key is mapped to `control`.
-Using `capslock` instead of `shift` can save your pinky.
-
-| Shortcut | Output |
-|----------|--------|
-| `ctrl` + `` ` `` | ~ |
-| `ctrl` + `num` | !@#$%^&*() |
-| `ctrl` + `...` | ... |
-
-```lua
--- ControlShift
--- $^: vim lineTail/lineHead
--- %": tmux splitVertical/splitHorizontal
-hs.loadSpoon("ControlShift")
-spoon.ControlShift:bindHotkeys({
-    '`', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0',
-    '-', '=', '[', ']', '\\', ';', '\'', ',', '.', '/'
-})
-spoon.ControlShift:start()
-```
-
-### Cursor
-
-Get the bundle id of the app you want to override.
-
-```sh
-osascript -e 'id of app "Raycast"'
-```
-
-`init.lua`:
-
-```lua
-local bundleIds = {
-    raycast = "com.raycast.macos",
-    cursor = "com.todesktop.230313mzl4w4u92"
-}
-
-hs.loadSpoon("Cursor")
-spoon.Cursor:bindHotkeys({
-    moveLeft = {{"cmd"}, "h"},
-    moveDown = {{"cmd"}, "j"},
-    moveUp = {{"cmd"}, "k"},
-    moveRight = {{"cmd"}, "l"},
-    moveWordLeft = {{"cmd", "ctrl"}, "h"},
-    moveWordRight = {{"cmd", "ctrl"}, "l"},
-    deleteChar = {{"cmd"}, "d"},
-    deleteWord = {{"cmd"}, "s"},
-})
-overrideHotKeys = {
-    moveLeft = {{"cmd", "ctrl"}, "h"},
-    moveRight = {{"cmd", "ctrl"}, "l"},
-    moveUp = {{"cmd", "ctrl"}, "k"},
-    moveDown = {{"cmd", "ctrl"}, "j"},
-    moveWordLeft = false,
-    moveWordRight = false,
-}
-spoon.Cursor:overrideHotKeys({
-    [bundleIds.raycast] = overrideHotKeys,
-    [bundleIds.cursor] = overrideHotKeys,
-})
-spoon.Cursor:start()
-```
-
-### Other Mappings
-
-| Shortcut | Mapping | Status |
-|----------|---------|--------|
-| `ctrl`+`enter` | `shift`+`enter` | ❌ |
-| `ctrl`+`cmd`+`[` | `shift`+`cmd`+`[` | ❌ |
-| `ctrl`+`cmd`+`]` | `shift`+`cmd`+`]` | ❌ |
-
-```lua
--- Ctrl+Enter to Shift+Enter mapping
--- This is not working after a while
-hs.eventtap.new({ hs.eventtap.event.types.keyDown }, function(event)
-    local flags = event:getFlags()
-    local keyCode = event:getKeyCode()
-    
-    if flags.ctrl and keyCode == 36 then
-        event:setFlags({shift = true, ctrl = false})
-        return false
-    end
-
-    return false
-end):start()
-```
-
-```lua
--- Ctrl+Cmd+[ and Ctrl+Cmd+] to Shift+Cmd+[ and Shift+Cmd+]
--- This is not working when press many times
-hs.eventtap.new({ hs.eventtap.event.types.keyDown }, function(event)
-    local flags = event:getFlags()
-    local keyCode = event:getKeyCode()
-
-    if flags.ctrl and flags.cmd and (keyCode == 33 or keyCode == 30) then
-        event:setFlags({shift = true, cmd = true, ctrl = false})
-        return false
-    end
-
-    return false
-end):start()
-```
-
-## tmux
-
-tmux is your best friend.
-But if you use tmux ssh into a remote server and start tmux again, it's not.
-
-## nvim
+## neovim
 
 ### Plugins
 
