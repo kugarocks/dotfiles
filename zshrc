@@ -242,4 +242,4 @@ bindkey '^[[A' history-search-backward
 bindkey '^[[B' history-search-forward
 
 # word split
-WORDCHARS='*?_.[]~=/&;!#$%^(){}<>'
+WORDCHARS='_'
