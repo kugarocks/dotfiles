@@ -20,8 +20,7 @@ Set symlinks for dotfiles. Nothing will happen if the target file already exists
 
 ## tmux
 
-To avoid network issues, tmux is run on a remote server. Locally, tmux is also used to get accustomed to its key bindings.
-
+I need to run tmux both on remote servers and locally to avoid network issues and get used to its key bindings.
 There are two approaches:
 
 * Nest tmux within tmux, using a plugin like [tmux-suspend](https://github.com/MunifTanjim/tmux-suspend) for consistent key bindings. For the inner tmux clipboard to function properly, OSC 52 and the [set-clipboard](https://github.com/tmux/tmux/wiki/Clipboard#terminal-support---tmux-inside-tmux) option must be enabled.
