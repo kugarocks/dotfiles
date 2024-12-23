@@ -1,16 +1,17 @@
 # dotfiles
 
-* hammerspoon: Set shortcuts for apps individually.
-* alacritty: Supper fast terminal.
+* Karabiner: Customize keyboard shortcuts.
+* Hammerspoon: Bring apps to front such as Raycast.
+* WezTerm: Quick select mode is cool.
+* Alacritty: Run cli programs such as Markdown Finder.
 * tmux: Your best friend.
 * nvim: Not VSCode.
 * p10k: Dress up your terminal.
 
-## hammerspoon
+## Karabiner
 
 The goal of this shortcut setup is to assign the most common functions to the easiest key combos.
-For apps with conflicts, you can rewrite the shortcuts individually.
-To avoid conflicts, simply use `cmd`+`ctrl` as default prefix.
+To resolve key binding conflicts, you can set conditions based on the frontmost application.
 Don't forget to save your pinky by mapping `capsLock` to `control`.
 
 | Function | Default | Cursor | Raycast |
@@ -23,6 +24,7 @@ Don't forget to save your pinky by mapping `capsLock` to `control`.
 | Move Word Right | `cmd`+`ctrl`+`l` | - | - |
 | Delete Char | `cmd`+`d` | `cmd`+`d` | `cmd`+`d` |
 | Delete Word | `cmd`+`s` | `cmd`+`s` | `cmd`+`s` |
+| Line Break | `ctrl`+`enter` | `ctrl`+`enter` | `ctrl`+`enter` |
 
 ### ControlEscape
 
