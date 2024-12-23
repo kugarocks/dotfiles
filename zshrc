@@ -15,7 +15,7 @@ export ZSH="$HOME/.oh-my-zsh"
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="powerlevel10k/powerlevel10k"
+ZSH_THEME="robbyrussell"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -108,7 +108,9 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 # custom aliases
+alias ls="eza --icons=always"
 alias zsh='vim ~/.zshrc'
+alias szsh='source ~/.zshrc'
 alias q='exit'
 alias s='sudo'
 alias v='nvim'
@@ -117,24 +119,22 @@ alias ga='git add'
 alias gc='git checkout'
 alias gs='git status'
 alias gd='git diff'
-alias sv='sudo vim'
-alias szsh="source ~/.zshrc"
 alias ..='cd ..'
 alias cls='clear'
 alias nano="vim"
 alias tailf="tail -f"
 alias lf='ll -p | grep -v /'
 alias ldir='ls -ld -- */'
-alias shc='ssh cmajorrocks'
-alias shck='ssh kuga@cmajorrocks'
-alias shcs='ssh soda@cmajorrocks'
 alias edngconf='vim /usr/local/etc/nginx/nginx.conf'
 alias cdngconf='cd /usr/local/etc/nginx'
 alias bs='brew services'
+alias ut='uptime'
 alias pc='pwd | pbcopy'
 alias nrd='npm run dev'
-alias nvi='vim /Users/kuga/.config/nvim/init.lua'
-alias cdnvp='cd /Users/kuga/.config/nvim/lua/plugins'
+alias mk='minikube'
+alias mks="minikube start --driver=hyperkit --image-mirror-country='cn'"
+alias ck="clickhouse"
+alias ssh="TERM=xterm ssh"
 
 # kubectx
 alias kc="kubectx"
@@ -176,28 +176,20 @@ export PATH=/Users/kuga/snippet:$PATH
 export LANG=en_US.UTF-8
 export LC_CTYPE=en_US.UTF-8
 
-# python
-#export PATH=$(brew --prefix python)/libexec/bin:$PATH
+# homebrew
+
+# nvim
+export PATH=/Users/kuga/nvim/bin:$PATH
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # homebrew
 export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.aliyun.com/homebrew/homebrew-bottles
 #export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.tuna.tsinghua.edu.cn/homebrew-bottles
+
+# mysql
 export PATH="/usr/local/opt/mysql@8.4/bin:$PATH"
-#export PATH="/usr/local/opt/node@18/bin:$PATH"
-#export PATH="/usr/local/opt/node@16/bin:$PATH"
-
-export PHP_DEBUG_VALUE=1
-export NVM_DIR="$HOME/.nvm"
-[ -s "/usr/local/opt/nvm/nvm.sh" ] && \. "/usr/local/opt/nvm/nvm.sh"
-export GOPROXY=https://goproxy.cn,direct
-
-
-# nap
-# Configuration
-#export NAP_CONFIG="~/.nap/config.yaml"
-export NAP_HOME="~/.nap"
-export NAP_DEFAULT_LANGUAGE="go"
-export NAP_THEME="dracula"
 
 # Colors
 export NAP_PRIMARY_COLOR="#AFBEE1"
@@ -210,17 +202,30 @@ export NAP_GRAY="240"
 export NAP_WHITE="#FFFFFF"
 
 # golang
-export GOPATH="/Users/kuga/go"
-export GOBIN="$GOPATH/bin"
-export PATH=$PATH:$GOBIN
+export GO111MODULE=on
+export GOPROXY=https://goproxy.cn
+export GOPATH=$HOME/go
+export GOBIN=$HOME/go/bin
+export PATH=$GOBIN:$PATH
+
+# llvm
+export PATH=/usr/local/llvm-15.0.0/bin:$PATH
 
 # mdf
 export MDF_HOME="$HOME/mdf"
 
 # the fuck
-fuck () { TF_PYTHONIOENCODING=$PYTHONIOENCODING; export TF_SHELL=zsh; export TF_ALIAS=fuck; TF_SHELL_ALIASES=$(alias); export TF_SHELL_ALIASES; TF_HISTORY="$(fc -ln -10)"; export TF_HISTORY; export PYTHONIOENCODING=utf-8; TF_CMD=$( thefuck THEFUCK_ARGUMENT_PLACEHOLDER $@ ) && eval $TF_CMD; unset TF_HISTORY; export PYTHONIOENCODING=$TF_PYTHONIOENCODING; test -n "$TF_CMD" && print -s $TF_CMD }
+# fuck () { TF_PYTHONIOENCODING=$PYTHONIOENCODING; export TF_SHELL=zsh; export TF_ALIAS=fuck; TF_SHELL_ALIASES=$(alias); export TF_SHELL_ALIASES; TF_HISTORY="$(fc -ln -10)"; export TF_HISTORY; export PYTHONIOENCODING=utf-8; TF_CMD=$( thefuck THEFUCK_ARGUMENT_PLACEHOLDER $@ ) && eval $TF_CMD; unset TF_HISTORY; export PYTHONIOENCODING=$TF_PYTHONIOENCODING; test -n "$TF_CMD" && print -s $TF_CMD }
 
+# auto suggestion
+source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+
+# syntax highlighting
+source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+# power level 10k
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+source /usr/local/share/powerlevel10k/powerlevel10k.zsh-theme
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 # history setup
@@ -236,12 +241,5 @@ setopt hist_verify
 bindkey '^[[A' history-search-backward
 bindkey '^[[B' history-search-forward
 
-# zsh auto suggestions
-source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-
-# eza
-alias ls="eza --icons=always"
-
 # word split
 WORDCHARS='*?-.[]~=/&;!#$%^(){}<>'
-
