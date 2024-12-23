@@ -10,21 +10,30 @@
 * powerlevel10k: Dress up your terminal.
 * Oh My Zsh: 10x developer.
 
+## Setup
+
+Set symlinks for dotfiles. Nothing will happen if the target file already exists.
+
+```bash
+./link.sh
+```
+
 ## tmux
 
-I need run tmux in remote server to avoid network issues.
-Also I need to run tmux locally to get used to its key bindings. There are two ways to do this.
-First, use tmux nested within tmux. To maintain consistent key bindings, you might need a plugin like [tmux-suspend](https://github.com/MunifTanjim/tmux-suspend).
-Additionally, for the inner tmux clipboard to work properly, you would need to use OSC 52 and the [set-clipboard](https://github.com/tmux/tmux/wiki/Clipboard#terminal-support---tmux-inside-tmux) option.
-For me, I prefer the second way, just use a new tab or split panes to avoid nested tmux sessions entirely.
-That's why I switch Alacritty to WezTerm.
+To avoid network issues, tmux is run on a remote server. Locally, tmux is also used to get accustomed to its key bindings.
+
+There are two approaches:
+
+* Nest tmux within tmux, using a plugin like [tmux-suspend](https://github.com/MunifTanjim/tmux-suspend) for consistent key bindings. For the inner tmux clipboard to function properly, OSC 52 and the [set-clipboard](https://github.com/tmux/tmux/wiki/Clipboard#terminal-support---tmux-inside-tmux) option must be enabled.
+
+* The preferred method is to avoid nested tmux sessions by using a new tab or split panes instead. This is why I switched from Alacritty to WezTerm.
 
 ## Karabiner
 
-The reason I use Karabiner for key bindings is that it has a higher priority than any other app.
-The goal of this shortcut setup is to assign the most common functions to the easiest key combos.
-To resolve key binding conflicts, you can set conditions based on the frontmost application.
-Don't forget to save your pinky by mapping `capsLock` to `control`.
+Karabiner is used for key bindings because it has higher priority than any other app.
+The goal of this setup is to assign the most common functions to the easiest key combinations.
+To resolve conflicts, set conditions based on the frontmost application.
+And don't forget to save your pinky by mapping `capsLock` to `control`.
 
 | Function | Default | Cursor | Raycast |
 |----------|----------|----------|----------|
@@ -44,7 +53,7 @@ Don't forget to save your pinky by mapping `capsLock` to `control`.
 ## Hammerspoon
 
 Hammerspoon is a powerful automation tool for macOS.
-I use Hammerspoon to bring Raycast to the frontmost application for Karabiner (It can't recognize Raycast).
+I use it to bring Raycast to the frontmost application for Karabiner, as Karabiner cannot recognize Raycast.
 
 ## Alacritty
 
