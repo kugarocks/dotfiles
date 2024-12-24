@@ -3,8 +3,8 @@ local wezterm = require("wezterm")
 local config = wezterm.config_builder()
 local mux = wezterm.mux
 
--- max fps
-config.max_fps = 120
+-- disable ligatures
+config.harfbuzz_features = { 'calt=0', 'clig=0', 'liga=0' }
 
 -- inactive pane
 config.inactive_pane_hsb = {
@@ -39,8 +39,11 @@ config.font_size = 13
 config.line_height = 1.2
 
 config.window_decorations = "RESIZE"
-config.window_background_opacity = 1
-config.macos_window_background_blur = 10
+
+-- https://github.com/wez/wezterm/issues/5555
+-- config.macos_window_background_blur = 10
+-- config.window_background_opacity = 1
+-- config.max_fps = 60
 
 -- my coolnight colorscheme:
 config.colors = {
