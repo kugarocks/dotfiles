@@ -36,9 +36,13 @@ end)
 
 config.font = wezterm.font("JetBrainsMono Nerd Font")
 config.font_size = 13
-config.line_height = 1.2
+config.line_height = 1.3
 
 config.window_decorations = "RESIZE"
+config.window_padding = {
+  left = 20,
+  bottom = 0,
+}
 
 -- https://github.com/wez/wezterm/issues/5555
 -- config.macos_window_background_blur = 10
