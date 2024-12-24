@@ -122,7 +122,7 @@ class = { instance = "Alacritty", general = "Alacritty" }
 # Default: "None"
 # Schema: `"Dark" | "Light" | "None"`
 
-decorations_theme_variant = "None"
+decorations_theme_variant = "Dark"
 
 # Prefer resizing window by discrete steps equal to cell dimensions.
 # Default: false
@@ -138,7 +138,7 @@ option_as_alt = "None" # (macos only)
 
 # Remove Top Bar
 
-decorations = "None"
+#decorations = "None"
 
 [scrolling]
 
