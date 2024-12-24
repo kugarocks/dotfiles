@@ -49,6 +49,8 @@ And don't forget to save your pinky by mapping `capsLock` to `control`.
 | Tab Right | `cmd`+`caps` + `]` | `cmd`+`caps` + `]` | `cmd`+`caps` + `]` |
 | !@#... | `caps` + `123...` | `caps` + `123...` | `caps` + `123...` |
 
+Trust me, your pinky will be much happier using `caps` + '123...' instead of `shift` + '123...'.
+
 ## Hammerspoon
 
 Hammerspoon is a powerful automation tool for macOS.
