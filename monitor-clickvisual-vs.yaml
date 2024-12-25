@@ -1,0 +1,31 @@
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  name: gitee-apps-vs
+  namespace: gitee
+spec:
+  gateways:
+  - monitor-gateway
+  hosts:
+  - '*'
+  http:
+  - match:
+    - uri:
+        prefix: /apps
+    - uri:
+        prefix: /minio/apps
+    route:
+    - destination:
+        host: gitee-api-gateway.gitee.svc.cluster.local
+        port:
+          number: 8080
+  - match:
+    - uri:
+        prefix: /static/apps
+    rewrite:
+      uri: /apps
+    route:
+    - destination:
+        host: gitee-minio.gitee.svc.cluster.local
+        port:
+          number: 9000

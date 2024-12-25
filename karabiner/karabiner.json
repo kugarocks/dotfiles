@@ -5,107 +5,39 @@
                 "parameters": { "basic.to_if_alone_timeout_milliseconds": 500 },
                 "rules": [
                     {
-                        "description": "ctrl+; => |",
+                        "description": "Change Capslock to Control. (Escape if pressed alone)",
                         "manipulators": [
                             {
                                 "from": {
-                                    "key_code": "semicolon",
-                                    "modifiers": {
-                                        "mandatory": ["control"],
-                                        "optional": ["any"]
-                                    }
+                                    "key_code": "caps_lock",
+                                    "modifiers": { "optional": ["any"] }
                                 },
                                 "to": [
                                     {
-                                        "key_code": "backslash",
-                                        "modifiers": ["shift"]
+                                        "key_code": "left_control",
+                                        "lazy": true
                                     }
                                 ],
+                                "to_if_alone": [{ "key_code": "escape" }],
                                 "type": "basic"
                             }
                         ]
                     },
                     {
-                        "description": "ctrl+m -> right_bracket (]), cmd+shift+m -> right_brace (})",
+                        "description": "Cmd+HJKL to arrow_keys, Cmd+Ctrl+H/L to move word",
                         "manipulators": [
                             {
-                                "from": {
-                                    "key_code": "m",
-                                    "modifiers": {
-                                        "mandatory": ["control"],
-                                        "optional": ["any"]
-                                    }
-                                },
-                                "to": [{ "key_code": "close_bracket" }],
-                                "type": "basic"
-                            },
-                            {
-                                "from": {
-                                    "key_code": "m",
-                                    "modifiers": {
-                                        "mandatory": ["command", "shift"],
-                                        "optional": ["any"]
-                                    }
-                                },
-                                "to": [
+                                "conditions": [
                                     {
-                                        "key_code": "close_bracket",
-                                        "modifiers": ["shift"]
+                                        "bundle_identifiers": [
+                                            "^com\\.raycast\\.macos$",
+                                            "^com\\.todesktop\\.230313mzl4w4u92$"
+                                        ],
+                                        "type": "frontmost_application_unless"
                                     }
                                 ],
-                                "type": "basic"
-                            }
-                        ]
-                    },
-                    {
-                        "description": "ctrl+n -> left_bracket ([), cmd+shift+n -> left_brace ({)",
-                        "manipulators": [
-                            {
                                 "from": {
-                                    "key_code": "n",
-                                    "modifiers": {
-                                        "mandatory": ["control"],
-                                        "optional": ["any"]
-                                    }
-                                },
-                                "to": [{ "key_code": "open_bracket" }],
-                                "type": "basic"
-                            },
-                            {
-                                "from": {
-                                    "key_code": "n",
-                                    "modifiers": {
-                                        "mandatory": ["command", "shift"],
-                                        "optional": ["any"]
-                                    }
-                                },
-                                "to": [
-                                    {
-                                        "key_code": "open_bracket",
-                                        "modifiers": ["shift"]
-                                    }
-                                ],
-                                "type": "basic"
-                            }
-                        ]
-                    },
-                    {
-                        "description": "ctrl+o -> equal (=), cmd+shift+o -> plus (+)",
-                        "manipulators": [
-                            {
-                                "from": {
-                                    "key_code": "o",
-                                    "modifiers": {
-                                        "mandatory": ["control"],
-                                        "optional": ["any"]
-                                    }
-                                },
-                                "to": [{ "key_code": "equal_sign" }],
-                                "type": "basic"
-                            },
-                            {
-                                "from": {
-                                    "key_code": "o",
+                                    "key_code": "h",
                                     "modifiers": {
                                         "mandatory": ["command", "control"],
                                         "optional": ["any"]
@@ -113,68 +45,35 @@
                                 },
                                 "to": [
                                     {
-                                        "key_code": "equal_sign",
-                                        "modifiers": ["shift"]
+                                        "key_code": "left_arrow",
+                                        "modifiers": ["option"]
                                     }
                                 ],
                                 "type": "basic"
-                            }
-                        ]
-                    },
-                    {
-                        "description": "ctrl+i -> hyphen (-), cmd+shift+i -> underscore (_)",
-                        "manipulators": [
-                            {
-                                "from": {
-                                    "key_code": "i",
-                                    "modifiers": {
-                                        "mandatory": ["control"],
-                                        "optional": ["any"]
-                                    }
-                                },
-                                "to": [{ "key_code": "hyphen" }],
-                                "type": "basic"
                             },
                             {
+                                "conditions": [
+                                    {
+                                        "bundle_identifiers": [
+                                            "^com\\.raycast\\.macos$",
+                                            "^com\\.todesktop\\.230313mzl4w4u92$"
+                                        ],
+                                        "type": "frontmost_application_unless"
+                                    }
+                                ],
                                 "from": {
-                                    "key_code": "i",
+                                    "key_code": "l",
                                     "modifiers": {
-                                        "mandatory": ["command", "shift"],
+                                        "mandatory": ["command", "control"],
                                         "optional": ["any"]
                                     }
                                 },
                                 "to": [
                                     {
-                                        "key_code": "hyphen",
-                                        "modifiers": ["shift"]
+                                        "key_code": "right_arrow",
+                                        "modifiers": ["option"]
                                     }
                                 ],
-                                "type": "basic"
-                            }
-                        ]
-                    },
-                    {
-                        "description": "Change Cmd+Ctrl+kjhl to up/down/left/right if ...",
-                        "manipulators": [
-                            {
-                                "conditions": [
-                                    {
-                                        "bundle_identifiers": [
-                                            "^com\\.raycast\\.macos$",
-                                            "^com\\.todesktop\\.230313mzl4w4u92$"
-                                        ],
-                                        "type": "frontmost_application_if"
-                                    }
-                                ],
-                                "description": "Change Cmd + Ctrl + k to Up Arrow",
-                                "from": {
-                                    "key_code": "k",
-                                    "modifiers": {
-                                        "mandatory": ["left_command", "left_control"],
-                                        "optional": ["any"]
-                                    }
-                                },
-                                "to": [{ "key_code": "up_arrow" }],
                                 "type": "basic"
                             },
                             {
@@ -184,14 +83,35 @@
                                             "^com\\.raycast\\.macos$",
                                             "^com\\.todesktop\\.230313mzl4w4u92$"
                                         ],
-                                        "type": "frontmost_application_if"
+                                        "type": "frontmost_application_unless"
                                     }
                                 ],
-                                "description": "Change Cmd + Ctrl + j to Down Arrow",
+                                "description": "Change Cmd + H to Left Arrow",
+                                "from": {
+                                    "key_code": "h",
+                                    "modifiers": {
+                                        "mandatory": ["left_command"],
+                                        "optional": ["any"]
+                                    }
+                                },
+                                "to": [{ "key_code": "left_arrow" }],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "bundle_identifiers": [
+                                            "^com\\.raycast\\.macos$",
+                                            "^com\\.todesktop\\.230313mzl4w4u92$"
+                                        ],
+                                        "type": "frontmost_application_unless"
+                                    }
+                                ],
+                                "description": "Change Cmd + J to Down Arrow",
                                 "from": {
                                     "key_code": "j",
                                     "modifiers": {
-                                        "mandatory": ["left_command", "left_control"],
+                                        "mandatory": ["left_command"],
                                         "optional": ["any"]
                                     }
                                 },
@@ -205,10 +125,57 @@
                                             "^com\\.raycast\\.macos$",
                                             "^com\\.todesktop\\.230313mzl4w4u92$"
                                         ],
+                                        "type": "frontmost_application_unless"
+                                    }
+                                ],
+                                "description": "Change Cmd + K to Up Arrow",
+                                "from": {
+                                    "key_code": "k",
+                                    "modifiers": {
+                                        "mandatory": ["left_command"],
+                                        "optional": ["any"]
+                                    }
+                                },
+                                "to": [{ "key_code": "up_arrow" }],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "bundle_identifiers": [
+                                            "^com\\.raycast\\.macos$",
+                                            "^com\\.todesktop\\.230313mzl4w4u92$"
+                                        ],
+                                        "type": "frontmost_application_unless"
+                                    }
+                                ],
+                                "description": "Change Cmd + L to Right Arrow",
+                                "from": {
+                                    "key_code": "l",
+                                    "modifiers": {
+                                        "mandatory": ["left_command"],
+                                        "optional": ["any"]
+                                    }
+                                },
+                                "to": [{ "key_code": "right_arrow" }],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "Cmd+Ctrl+HJKL to arrow_key for specific apps",
+                        "manipulators": [
+                            {
+                                "conditions": [
+                                    {
+                                        "bundle_identifiers": [
+                                            "^com\\.raycast\\.macos$",
+                                            "^com\\.todesktop\\.230313mzl4w4u92$"
+                                        ],
                                         "type": "frontmost_application_if"
                                     }
                                 ],
-                                "description": "Change Cmd + Ctrl + h to Left Arrow",
+                                "description": "Change Cmd + Ctrl + H to Left Arrow",
                                 "from": {
                                     "key_code": "h",
                                     "modifiers": {
@@ -229,7 +196,49 @@
                                         "type": "frontmost_application_if"
                                     }
                                 ],
-                                "description": "Change Cmd + Ctrl + l to Right Arrow",
+                                "description": "Change Cmd + Ctrl + J to Down Arrow",
+                                "from": {
+                                    "key_code": "j",
+                                    "modifiers": {
+                                        "mandatory": ["left_command", "left_control"],
+                                        "optional": ["any"]
+                                    }
+                                },
+                                "to": [{ "key_code": "down_arrow" }],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "bundle_identifiers": [
+                                            "^com\\.raycast\\.macos$",
+                                            "^com\\.todesktop\\.230313mzl4w4u92$"
+                                        ],
+                                        "type": "frontmost_application_if"
+                                    }
+                                ],
+                                "description": "Change Cmd + Ctrl + K to Up Arrow",
+                                "from": {
+                                    "key_code": "k",
+                                    "modifiers": {
+                                        "mandatory": ["left_command", "left_control"],
+                                        "optional": ["any"]
+                                    }
+                                },
+                                "to": [{ "key_code": "up_arrow" }],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "bundle_identifiers": [
+                                            "^com\\.raycast\\.macos$",
+                                            "^com\\.todesktop\\.230313mzl4w4u92$"
+                                        ],
+                                        "type": "frontmost_application_if"
+                                    }
+                                ],
+                                "description": "Change Cmd + Ctrl + L to Right Arrow",
                                 "from": {
                                     "key_code": "l",
                                     "modifiers": {
@@ -243,88 +252,31 @@
                         ]
                     },
                     {
-                        "description": "Remap Cmd+Shift+HJKL to Ctrl+Shift+HJKL for WezTerm only",
+                        "description": "Cmd+D delete char, Cmd+S delete word",
                         "manipulators": [
                             {
-                                "conditions": [
-                                    {
-                                        "bundle_identifiers": [
-                                            "^com\\.github\\.wez\\.wezterm$"
-                                        ],
-                                        "type": "frontmost_application_if"
-                                    }
-                                ],
                                 "from": {
-                                    "key_code": "h",
-                                    "modifiers": { "mandatory": ["left_command", "left_shift"] }
-                                },
-                                "to": [
-                                    {
-                                        "key_code": "h",
-                                        "modifiers": ["left_control", "left_shift"]
+                                    "key_code": "d",
+                                    "modifiers": {
+                                        "mandatory": ["command"],
+                                        "optional": ["any"]
                                     }
-                                ],
+                                },
+                                "to": [{ "key_code": "delete_or_backspace" }],
                                 "type": "basic"
                             },
                             {
-                                "conditions": [
-                                    {
-                                        "bundle_identifiers": [
-                                            "^com\\.github\\.wez\\.wezterm$"
-                                        ],
-                                        "type": "frontmost_application_if"
-                                    }
-                                ],
                                 "from": {
-                                    "key_code": "j",
-                                    "modifiers": { "mandatory": ["left_command", "left_shift"] }
+                                    "key_code": "s",
+                                    "modifiers": {
+                                        "mandatory": ["command"],
+                                        "optional": ["any"]
+                                    }
                                 },
                                 "to": [
                                     {
-                                        "key_code": "j",
-                                        "modifiers": ["left_control", "left_shift"]
-                                    }
-                                ],
-                                "type": "basic"
-                            },
-                            {
-                                "conditions": [
-                                    {
-                                        "bundle_identifiers": [
-                                            "^com\\.github\\.wez\\.wezterm$"
-                                        ],
-                                        "type": "frontmost_application_if"
-                                    }
-                                ],
-                                "from": {
-                                    "key_code": "k",
-                                    "modifiers": { "mandatory": ["left_command", "left_shift"] }
-                                },
-                                "to": [
-                                    {
-                                        "key_code": "k",
-                                        "modifiers": ["left_control", "left_shift"]
-                                    }
-                                ],
-                                "type": "basic"
-                            },
-                            {
-                                "conditions": [
-                                    {
-                                        "bundle_identifiers": [
-                                            "^com\\.github\\.wez\\.wezterm$"
-                                        ],
-                                        "type": "frontmost_application_if"
-                                    }
-                                ],
-                                "from": {
-                                    "key_code": "l",
-                                    "modifiers": { "mandatory": ["left_command", "left_shift"] }
-                                },
-                                "to": [
-                                    {
-                                        "key_code": "l",
-                                        "modifiers": ["left_control", "left_shift"]
+                                        "key_code": "delete_or_backspace",
+                                        "modifiers": ["option"]
                                     }
                                 ],
                                 "type": "basic"
@@ -332,7 +284,7 @@
                         ]
                     },
                     {
-                        "description": "Map Ctrl+Enter to Shift+Enter",
+                        "description": "Ctrl+Enter to Shift+Enter",
                         "manipulators": [
                             {
                                 "description": "Ctrl + Enter to Shift + Enter",
@@ -354,7 +306,7 @@
                         ]
                     },
                     {
-                        "description": "Map Ctrl+Cmd+[/] to Shift+Cmd+[/]",
+                        "description": "Ctrl+Cmd+[ or ] to Shift+Cmd+[ or ]",
                         "manipulators": [
                             {
                                 "description": "Ctrl+Cmd+[ to Shift+Cmd+[",
@@ -718,61 +670,25 @@
                         ]
                     },
                     {
-                        "description": "Cmd+D deletes one character, Cmd+S deletes one word",
-                        "manipulators": [
-                            {
-                                "from": {
-                                    "key_code": "d",
-                                    "modifiers": {
-                                        "mandatory": ["command"],
-                                        "optional": ["any"]
-                                    }
-                                },
-                                "to": [{ "key_code": "delete_or_backspace" }],
-                                "type": "basic"
-                            },
-                            {
-                                "from": {
-                                    "key_code": "s",
-                                    "modifiers": {
-                                        "mandatory": ["command"],
-                                        "optional": ["any"]
-                                    }
-                                },
-                                "to": [
-                                    {
-                                        "key_code": "delete_or_backspace",
-                                        "modifiers": ["option"]
-                                    }
-                                ],
-                                "type": "basic"
-                            }
-                        ]
-                    },
-                    {
-                        "description": "Map Cmd+Ctrl+H to move one word backward unless ...",
+                        "description": "Cmd+Shift+HJKL to Ctrl+Shift+HJKL for WezTerm only",
                         "manipulators": [
                             {
                                 "conditions": [
                                     {
                                         "bundle_identifiers": [
-                                            "^com\\.raycast\\.macos$",
-                                            "^com\\.todesktop\\.230313mzl4w4u92$"
+                                            "^com\\.github\\.wez\\.wezterm$"
                                         ],
-                                        "type": "frontmost_application_unless"
+                                        "type": "frontmost_application_if"
                                     }
                                 ],
                                 "from": {
                                     "key_code": "h",
-                                    "modifiers": {
-                                        "mandatory": ["command", "control"],
-                                        "optional": ["any"]
-                                    }
+                                    "modifiers": { "mandatory": ["left_command", "left_shift"] }
                                 },
                                 "to": [
                                     {
-                                        "key_code": "left_arrow",
-                                        "modifiers": ["option"]
+                                        "key_code": "h",
+                                        "modifiers": ["left_control", "left_shift"]
                                     }
                                 ],
                                 "type": "basic"
@@ -781,133 +697,212 @@
                                 "conditions": [
                                     {
                                         "bundle_identifiers": [
-                                            "^com\\.raycast\\.macos$",
-                                            "^com\\.todesktop\\.230313mzl4w4u92$"
+                                            "^com\\.github\\.wez\\.wezterm$"
                                         ],
-                                        "type": "frontmost_application_unless"
+                                        "type": "frontmost_application_if"
                                     }
                                 ],
-                                "from": {
-                                    "key_code": "l",
-                                    "modifiers": {
-                                        "mandatory": ["command", "control"],
-                                        "optional": ["any"]
-                                    }
-                                },
-                                "to": [
-                                    {
-                                        "key_code": "right_arrow",
-                                        "modifiers": ["option"]
-                                    }
-                                ],
-                                "type": "basic"
-                            }
-                        ]
-                    },
-                    {
-                        "description": "Change Cmd+kjhl to up/down/left/right unless ...",
-                        "manipulators": [
-                            {
-                                "conditions": [
-                                    {
-                                        "bundle_identifiers": [
-                                            "^com\\.raycast\\.macos$",
-                                            "^com\\.todesktop\\.230313mzl4w4u92$"
-                                        ],
-                                        "type": "frontmost_application_unless"
-                                    }
-                                ],
-                                "description": "Change Cmd + Ctrl + k to Up Arrow",
-                                "from": {
-                                    "key_code": "k",
-                                    "modifiers": {
-                                        "mandatory": ["left_command"],
-                                        "optional": ["any"]
-                                    }
-                                },
-                                "to": [{ "key_code": "up_arrow" }],
-                                "type": "basic"
-                            },
-                            {
-                                "conditions": [
-                                    {
-                                        "bundle_identifiers": [
-                                            "^com\\.raycast\\.macos$",
-                                            "^com\\.todesktop\\.230313mzl4w4u92$"
-                                        ],
-                                        "type": "frontmost_application_unless"
-                                    }
-                                ],
-                                "description": "Change Cmd + j to Down Arrow",
                                 "from": {
                                     "key_code": "j",
-                                    "modifiers": {
-                                        "mandatory": ["left_command"],
-                                        "optional": ["any"]
-                                    }
+                                    "modifiers": { "mandatory": ["left_command", "left_shift"] }
                                 },
-                                "to": [{ "key_code": "down_arrow" }],
+                                "to": [
+                                    {
+                                        "key_code": "j",
+                                        "modifiers": ["left_control", "left_shift"]
+                                    }
+                                ],
                                 "type": "basic"
                             },
                             {
                                 "conditions": [
                                     {
                                         "bundle_identifiers": [
-                                            "^com\\.raycast\\.macos$",
-                                            "^com\\.todesktop\\.230313mzl4w4u92$"
+                                            "^com\\.github\\.wez\\.wezterm$"
                                         ],
-                                        "type": "frontmost_application_unless"
+                                        "type": "frontmost_application_if"
                                     }
                                 ],
-                                "description": "Change Cmd + h to Left Arrow",
                                 "from": {
-                                    "key_code": "h",
-                                    "modifiers": {
-                                        "mandatory": ["left_command"],
-                                        "optional": ["any"]
-                                    }
+                                    "key_code": "k",
+                                    "modifiers": { "mandatory": ["left_command", "left_shift"] }
                                 },
-                                "to": [{ "key_code": "left_arrow" }],
+                                "to": [
+                                    {
+                                        "key_code": "k",
+                                        "modifiers": ["left_control", "left_shift"]
+                                    }
+                                ],
                                 "type": "basic"
                             },
                             {
                                 "conditions": [
                                     {
                                         "bundle_identifiers": [
-                                            "^com\\.raycast\\.macos$",
-                                            "^com\\.todesktop\\.230313mzl4w4u92$"
+                                            "^com\\.github\\.wez\\.wezterm$"
                                         ],
-                                        "type": "frontmost_application_unless"
+                                        "type": "frontmost_application_if"
                                     }
                                 ],
-                                "description": "Change Cmd + l to Right Arrow",
                                 "from": {
                                     "key_code": "l",
-                                    "modifiers": {
-                                        "mandatory": ["left_command"],
-                                        "optional": ["any"]
-                                    }
+                                    "modifiers": { "mandatory": ["left_command", "left_shift"] }
                                 },
-                                "to": [{ "key_code": "right_arrow" }],
+                                "to": [
+                                    {
+                                        "key_code": "l",
+                                        "modifiers": ["left_control", "left_shift"]
+                                    }
+                                ],
                                 "type": "basic"
                             }
                         ]
                     },
                     {
-                        "description": "Change capslock to escape. (Left control if pressed alone)",
+                        "description": "Ctrl+I to hyphen(-), Cmd+Ctrl+I to underscore(_)",
                         "manipulators": [
                             {
                                 "from": {
-                                    "key_code": "caps_lock",
-                                    "modifiers": { "optional": ["any"] }
+                                    "key_code": "i",
+                                    "modifiers": {
+                                        "mandatory": ["command", "control"],
+                                        "optional": ["any"]
+                                    }
                                 },
                                 "to": [
                                     {
-                                        "key_code": "left_control",
-                                        "lazy": true
+                                        "key_code": "hyphen",
+                                        "modifiers": ["shift"]
                                     }
                                 ],
-                                "to_if_alone": [{ "key_code": "escape" }],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "i",
+                                    "modifiers": {
+                                        "mandatory": ["control"],
+                                        "optional": ["any"]
+                                    }
+                                },
+                                "to": [{ "key_code": "hyphen" }],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "Ctrl+O to equal(=), Cmd+Ctrl+O to plus(+)",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "o",
+                                    "modifiers": {
+                                        "mandatory": ["command", "control"],
+                                        "optional": ["any"]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "equal_sign",
+                                        "modifiers": ["shift"]
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "o",
+                                    "modifiers": {
+                                        "mandatory": ["control"],
+                                        "optional": ["any"]
+                                    }
+                                },
+                                "to": [{ "key_code": "equal_sign" }],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "Ctrl+N to left_bracket ([), Cmd+Ctrl+N to left_brace ({)",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "n",
+                                    "modifiers": {
+                                        "mandatory": ["command", "control"],
+                                        "optional": ["any"]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "open_bracket",
+                                        "modifiers": ["shift"]
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "n",
+                                    "modifiers": {
+                                        "mandatory": ["control"],
+                                        "optional": ["any"]
+                                    }
+                                },
+                                "to": [{ "key_code": "open_bracket" }],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "Ctrl+M to right_bracket (]), Cmd+Ctrl+M to right_brace (})",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "m",
+                                    "modifiers": {
+                                        "mandatory": ["command", "control"],
+                                        "optional": ["any"]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "close_bracket",
+                                        "modifiers": ["shift"]
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "m",
+                                    "modifiers": {
+                                        "mandatory": ["control"],
+                                        "optional": ["any"]
+                                    }
+                                },
+                                "to": [{ "key_code": "close_bracket" }],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "Ctrl+Semicolon(;) => Pepi (|)",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "semicolon",
+                                    "modifiers": {
+                                        "mandatory": ["control"],
+                                        "optional": ["any"]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "backslash",
+                                        "modifiers": ["shift"]
+                                    }
+                                ],
                                 "type": "basic"
                             }
                         ]
