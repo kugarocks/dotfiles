@@ -83,7 +83,7 @@ config.keys = {
 
   -- split horizontal/vertical
   {
-    key = "|",
+    key = "+",
     mods = "CMD|SHIFT",
     action = wezterm.action.SplitHorizontal { domain = "CurrentPaneDomain" },
   },
