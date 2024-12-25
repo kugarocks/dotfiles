@@ -47,7 +47,15 @@ And don't forget to save your pinky by mapping `capsLock` to `control`.
 | Line Break | `caps`+`enter` | `caps`+`enter` | `caps`+`enter` |
 | Tab Left | `cmd`+`caps` + `[` | `cmd`+`caps` + `[` | `cmd`+`caps` + `[` |
 | Tab Right | `cmd`+`caps` + `]` | `cmd`+`caps` + `]` | `cmd`+`caps` + `]` |
-| !@#... | `caps` + `123...` | `caps` + `123...` | `caps` + `123...` |
+| `!@#...` | `caps` + `123...` | `caps` + `123...` | `caps` + `123...` |
+| `-` | `caps` + `i` | `caps` + `i` | `caps` + `i` |
+| `=` | `caps` + `o` | `caps` + `o` | `caps` + `o` |
+| `[` | `caps` + `n` | `caps` + `n` | `caps` + `n` |
+| `]` | `caps` + `m` | `caps` + `m` | `caps` + `m` |
+| `_` | `cmd` + `caps` + `i` | `cmd` + `caps` + `i` | `cmd` + `caps` + `i` |
+| `+` | `cmd` + `caps` + `o` | `cmd` + `caps` + `o` | `cmd` + `caps` + `o` |
+| `{` | `cmd` + `caps` + `n` | `cmd` + `caps` + `n` | `cmd` + `caps` + `n` |
+| `}` | `cmd` + `caps` + `m` | `cmd` + `caps` + `m` | `cmd` + `caps` + `m` |
 
 Trust me, your pinky will be much happier using `caps` + `123...` instead of `shift` + `123...`.
 
