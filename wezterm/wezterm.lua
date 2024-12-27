@@ -67,7 +67,7 @@ config.colors = {
 config.quick_select_patterns = {
   -- 匹配 k8s pod 名称模式
   -- 通常格式为: name-hash-hash (例如: nginx-7cf9cf5f8b-j5kzq)
-  [[[\w-]+-[0-9a-f]+-[0-9a-z]+]]
+  [[[\w-]+-[\w]+]],
 }
 
 config.keys = {
