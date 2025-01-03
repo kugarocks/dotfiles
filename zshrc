@@ -240,3 +240,6 @@ bindkey '^[[B' history-search-forward
 
 # word split
 WORDCHARS='_'
+
+# wezterm
+PATH="$PATH:/Applications/WezTerm.app/Contents/MacOS"

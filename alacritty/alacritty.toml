@@ -138,7 +138,7 @@ option_as_alt = "None" # (macos only)
 
 # Remove Top Bar
 
-#decorations = "None"
+decorations = "None"
 
 [scrolling]
 
