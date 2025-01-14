@@ -129,12 +129,15 @@ alias edngconf='vim /usr/local/etc/nginx/nginx.conf'
 alias cdngconf='cd /usr/local/etc/nginx'
 alias bs='brew services'
 alias ut='uptime'
-alias pc='pwd | pbcopy'
+alias co='pbcopy'
+alias pa='pbpaste'
+alias cj='pbpaste | jq'
 alias nrd='npm run dev'
 alias mk='minikube'
 alias mks="minikube start --driver=hyperkit --image-mirror-country='cn'"
 alias ck="clickhouse"
 alias ssh="TERM=xterm ssh"
+alias tar="gtar"
 
 # kubectx
 alias kc="kubectx"
