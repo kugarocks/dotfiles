@@ -246,3 +246,7 @@ WORDCHARS='_'
 
 # wezterm
 PATH="$PATH:/Applications/WezTerm.app/Contents/MacOS"
+
+# openresty
+PATH=/usr/local/openresty/bin:$PATH
+

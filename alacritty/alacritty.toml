@@ -72,7 +72,7 @@ dynamic_padding = false
 # Default: 1.0
 # Schema: `<float>`
 
-opacity = 1.0
+opacity = 1
 
 # Request compositor to blur content behind transparent windows.
 # Default: false
