@@ -5,15 +5,12 @@
                 "parameters": { "basic.to_if_alone_timeout_milliseconds": 500 },
                 "rules": [
                     {
-                        "description": "Toggle Caps Lock with Cmd + U",
+                        "description": "Toggle Caps Lock with Left Control",
                         "manipulators": [
                             {
                                 "from": {
-                                    "key_code": "u",
-                                    "modifiers": {
-                                        "mandatory": ["command"],
-                                        "optional": ["any"]
-                                    }
+                                    "key_code": "left_control",
+                                    "modifiers": { "optional": ["any"] }
                                 },
                                 "to": [{ "key_code": "caps_lock" }],
                                 "type": "basic"
@@ -21,7 +18,7 @@
                         ]
                     },
                     {
-                        "description": "Cmd+F to Ctrl+G for Alacritty only",
+                        "description": "Cmd+F to Ctrl+G for Alacritty only for tmux finger",
                         "manipulators": [
                             {
                                 "conditions": [
@@ -801,6 +798,38 @@
                         ]
                     },
                     {
+                        "description": "Ctrl+U to backtick (`), Cmd+Ctrl+U to tilde (~)",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "u",
+                                    "modifiers": {
+                                        "mandatory": ["command", "control"],
+                                        "optional": ["any"]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "grave_accent_and_tilde",
+                                        "modifiers": ["shift"]
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "u",
+                                    "modifiers": {
+                                        "mandatory": ["control"],
+                                        "optional": ["any"]
+                                    }
+                                },
+                                "to": [{ "key_code": "grave_accent_and_tilde" }],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
                         "description": "Ctrl+I to hyphen(-), Cmd+Ctrl+I to underscore(_)",
                         "manipulators": [
                             {
@@ -929,7 +958,7 @@
                         ]
                     },
                     {
-                        "description": "Ctrl+Semicolon(;) => Pepi (|)",
+                        "description": "Ctrl+; => Pepi (|) and Ctrl+Cmd+; => Backslash (\\)",
                         "manipulators": [
                             {
                                 "from": {
@@ -946,11 +975,33 @@
                                     }
                                 ],
                                 "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "semicolon",
+                                    "modifiers": {
+                                        "mandatory": ["control", "command"],
+                                        "optional": ["any"]
+                                    }
+                                },
+                                "to": [{ "key_code": "backslash" }],
+                                "type": "basic"
                             }
                         ]
                     }
                 ]
             },
+            "devices": [
+                {
+                    "identifiers": {
+                        "is_keyboard": true,
+                        "is_pointing_device": true,
+                        "product_id": 544,
+                        "vendor_id": 1452
+                    },
+                    "ignore": false
+                }
+            ],
             "name": "Default profile",
             "selected": true,
             "virtual_hid_keyboard": { "keyboard_type_v2": "ansi" }
