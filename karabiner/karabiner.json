@@ -380,7 +380,7 @@
                         ]
                     },
                     {
-                        "description": "Cmd+D delete char, Cmd+S delete word, Cmd+; forward delete char",
+                        "description": "Cmd+D delete char, Cmd+S delete word, Cmd+Ctrl+E forward delete",
                         "manipulators": [
                             {
                                 "from": {
@@ -411,9 +411,9 @@
                             },
                             {
                                 "from": {
-                                    "key_code": "semicolon",
+                                    "key_code": "e",
                                     "modifiers": {
-                                        "mandatory": ["command"],
+                                        "mandatory": ["command", "control"],
                                         "optional": ["any"]
                                     }
                                 },
