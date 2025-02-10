@@ -59,12 +59,36 @@
                         ]
                     },
                     {
-                        "description": "Opt+HJKL => Mouse Move, Opt+Ctrl+HJKL => Mouse Move Faster",
+                        "description": "Mouse Move: Ctrl+HJKL=>Fast, Opt+HJKL=>Normal, Ctrl+Opt=>Slow",
                         "manipulators": [
                             {
                                 "from": {
                                     "key_code": "h",
                                     "modifiers": { "mandatory": ["option", "control"] }
+                                },
+                                "to": [
+                                    {
+                                        "mouse_key": {
+                                            "speed_multiplier": 1.0,
+                                            "x": -250,
+                                            "y": 0
+                                        }
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "bundle_identifiers": [
+                                            "^org\\.alacritty$"
+                                        ],
+                                        "type": "frontmost_application_unless"
+                                    }
+                                ],
+                                "from": {
+                                    "key_code": "h",
+                                    "modifiers": { "mandatory": ["control"] }
                                 },
                                 "to": [
                                     {
@@ -97,6 +121,30 @@
                                 "from": {
                                     "key_code": "j",
                                     "modifiers": { "mandatory": ["option", "control"] }
+                                },
+                                "to": [
+                                    {
+                                        "mouse_key": {
+                                            "speed_multiplier": 1.0,
+                                            "x": 0,
+                                            "y": 250
+                                        }
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "bundle_identifiers": [
+                                            "^org\\.alacritty$"
+                                        ],
+                                        "type": "frontmost_application_unless"
+                                    }
+                                ],
+                                "from": {
+                                    "key_code": "j",
+                                    "modifiers": { "mandatory": ["control"] }
                                 },
                                 "to": [
                                     {
@@ -129,6 +177,30 @@
                                 "from": {
                                     "key_code": "k",
                                     "modifiers": { "mandatory": ["option", "control"] }
+                                },
+                                "to": [
+                                    {
+                                        "mouse_key": {
+                                            "speed_multiplier": 1.0,
+                                            "x": 0,
+                                            "y": -250
+                                        }
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "bundle_identifiers": [
+                                            "^org\\.alacritty$"
+                                        ],
+                                        "type": "frontmost_application_unless"
+                                    }
+                                ],
+                                "from": {
+                                    "key_code": "k",
+                                    "modifiers": { "mandatory": ["control"] }
                                 },
                                 "to": [
                                     {
@@ -161,6 +233,30 @@
                                 "from": {
                                     "key_code": "l",
                                     "modifiers": { "mandatory": ["option", "control"] }
+                                },
+                                "to": [
+                                    {
+                                        "mouse_key": {
+                                            "speed_multiplier": 1.0,
+                                            "x": 250,
+                                            "y": 0
+                                        }
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "bundle_identifiers": [
+                                            "^org\\.alacritty$"
+                                        ],
+                                        "type": "frontmost_application_unless"
+                                    }
+                                ],
+                                "from": {
+                                    "key_code": "l",
+                                    "modifiers": { "mandatory": ["control"] }
                                 },
                                 "to": [
                                     {
@@ -942,22 +1038,6 @@
                             },
                             {
                                 "from": {
-                                    "key_code": "quote",
-                                    "modifiers": {
-                                        "mandatory": ["control"],
-                                        "optional": ["any"]
-                                    }
-                                },
-                                "to": [
-                                    {
-                                        "key_code": "quote",
-                                        "modifiers": ["shift"]
-                                    }
-                                ],
-                                "type": "basic"
-                            },
-                            {
-                                "from": {
                                     "key_code": "comma",
                                     "modifiers": {
                                         "mandatory": ["control"],
@@ -1167,7 +1247,7 @@
                         ]
                     },
                     {
-                        "description": "Ctrl+; => Pepi (|) and Ctrl+Cmd+; => Backslash (\\)",
+                        "description": "Ctrl+; => Pepi (|) and Ctrl+' => Backslash (\\)",
                         "manipulators": [
                             {
                                 "from": {
@@ -1187,9 +1267,9 @@
                             },
                             {
                                 "from": {
-                                    "key_code": "semicolon",
+                                    "key_code": "quote",
                                     "modifiers": {
-                                        "mandatory": ["control", "command"],
+                                        "mandatory": ["control"],
                                         "optional": ["any"]
                                     }
                                 },
