@@ -69,7 +69,7 @@
                                 "to": [
                                     {
                                         "mouse_key": {
-                                            "speed_multiplier": 5.0,
+                                            "speed_multiplier": 4.0,
                                             "x": -1000,
                                             "y": 0
                                         }
@@ -101,7 +101,7 @@
                                 "to": [
                                     {
                                         "mouse_key": {
-                                            "speed_multiplier": 5.0,
+                                            "speed_multiplier": 4.0,
                                             "x": 0,
                                             "y": 1000
                                         }
@@ -133,7 +133,7 @@
                                 "to": [
                                     {
                                         "mouse_key": {
-                                            "speed_multiplier": 5.0,
+                                            "speed_multiplier": 4.0,
                                             "x": 0,
                                             "y": -1000
                                         }
@@ -165,7 +165,7 @@
                                 "to": [
                                     {
                                         "mouse_key": {
-                                            "speed_multiplier": 5.0,
+                                            "speed_multiplier": 4.0,
                                             "x": 1000,
                                             "y": 0
                                         }
