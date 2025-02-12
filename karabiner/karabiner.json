@@ -5,6 +5,25 @@
                 "parameters": { "basic.to_if_alone_timeout_milliseconds": 500 },
                 "rules": [
                     {
+                        "description": "Change Tab to Option when combined",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "tab",
+                                    "modifiers": { "optional": ["any"] }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "left_option",
+                                        "lazy": true
+                                    }
+                                ],
+                                "to_if_alone": [{ "key_code": "tab" }],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
                         "description": "Opt+N => Mouse Wheel Up, Opt+M => Mouse Wheel Down",
                         "manipulators": [
                             {
@@ -78,6 +97,22 @@
                                 "type": "basic"
                             },
                             {
+                                "from": {
+                                    "key_code": "h",
+                                    "modifiers": { "mandatory": ["option", "command"] }
+                                },
+                                "to": [
+                                    {
+                                        "mouse_key": {
+                                            "speed_multiplier": 1.0,
+                                            "x": -250,
+                                            "y": 0
+                                        }
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
                                 "conditions": [
                                     {
                                         "bundle_identifiers": [
@@ -121,6 +156,22 @@
                                 "from": {
                                     "key_code": "j",
                                     "modifiers": { "mandatory": ["option", "control"] }
+                                },
+                                "to": [
+                                    {
+                                        "mouse_key": {
+                                            "speed_multiplier": 1.0,
+                                            "x": 0,
+                                            "y": 250
+                                        }
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "j",
+                                    "modifiers": { "mandatory": ["option", "command"] }
                                 },
                                 "to": [
                                     {
@@ -190,6 +241,22 @@
                                 "type": "basic"
                             },
                             {
+                                "from": {
+                                    "key_code": "k",
+                                    "modifiers": { "mandatory": ["option", "command"] }
+                                },
+                                "to": [
+                                    {
+                                        "mouse_key": {
+                                            "speed_multiplier": 1.0,
+                                            "x": 0,
+                                            "y": -250
+                                        }
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
                                 "conditions": [
                                     {
                                         "bundle_identifiers": [
@@ -233,6 +300,22 @@
                                 "from": {
                                     "key_code": "l",
                                     "modifiers": { "mandatory": ["option", "control"] }
+                                },
+                                "to": [
+                                    {
+                                        "mouse_key": {
+                                            "speed_multiplier": 1.0,
+                                            "x": 250,
+                                            "y": 0
+                                        }
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "l",
+                                    "modifiers": { "mandatory": ["option", "command"] }
                                 },
                                 "to": [
                                     {
