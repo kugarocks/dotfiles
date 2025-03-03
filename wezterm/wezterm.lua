@@ -6,32 +6,17 @@ local mux = wezterm.mux
 -- disable ligatures
 config.harfbuzz_features = { 'calt=0', 'clig=0', 'liga=0' }
 
--- inactive pane
-config.inactive_pane_hsb = {
-  brightness = 1,
-}
-
--- startup config
--- wezterm.on("gui-startup", function(cmd)
---    local tab, pane, window = mux.spawn_window(cmd or {})
---    window:gui_window():toggle_fullscreen()
--- end)
-
-wezterm.on("gui-startup", function(cmd)
-  -- Pick the active screen to maximize into, there are also other options, see the docs.
-  local active = wezterm.gui.screens().active
-
-  -- Set the window coords on spawn.
-  local tab, pane, window = mux.spawn_window(cmd or {
-    x = active.x,
-    y = active.y,
-    width = active.width,
-    height = active.height,
-  })
-
-  -- You probably don't need both, but you can also set the positions after spawn.
-  window:gui_window():set_position(active.x, active.y)
-  window:gui_window():set_inner_size(active.width, active.height)
+wezterm.on("gui-startup", function()
+  local tab, pane, window = mux.spawn_window{
+    args = { 'zsh', '-c', [[
+      if /opt/homebrew/bin/tmux has-session 2>/dev/null; then
+        exec /opt/homebrew/bin/tmux attach
+      else
+        exec /opt/homebrew/bin/tmux new-session
+      fi
+    ]] },
+  }
+  window:gui_window():maximize()
 end)
 
 config.font = wezterm.font("JetBrainsMono Nerd Font")
@@ -39,19 +24,15 @@ config.font_size = 13
 config.line_height = 1.3
 
 config.window_decorations = "RESIZE"
+config.enable_tab_bar = false
 config.window_padding = {
   left = 20,
   bottom = 0,
 }
 
--- https://github.com/wez/wezterm/issues/5555
--- config.macos_window_background_blur = 10
--- config.window_background_opacity = 1
--- config.max_fps = 60
-
 -- my coolnight colorscheme:
 config.colors = {
-	foreground = "#CBE0F0",
+  foreground = "#CBE0F0",
 	background = "#011423",
 	cursor_bg = "#47FF9C",
 	cursor_border = "#47FF9C",
