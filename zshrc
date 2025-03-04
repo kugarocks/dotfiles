@@ -109,6 +109,7 @@ source $ZSH/oh-my-zsh.sh
 
 # custom aliases
 alias ls="eza --icons=always"
+alias lg="lazygit"
 alias zsh='vim ~/.zshrc'
 alias szsh='source ~/.zshrc'
 alias q='exit'
@@ -250,3 +251,6 @@ PATH="$PATH:/Applications/WezTerm.app/Contents/MacOS"
 # openresty
 # PATH=/usr/local/openresty/bin:$PATH
 
+# veee
+export HTTP_PROXY=http://localhost:15236
+export HTTPS_PROXY=http://localhost:15236
