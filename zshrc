@@ -211,6 +211,7 @@ export GOPROXY=https://goproxy.cn
 export GOPATH=$HOME/go
 export GOBIN=$HOME/go/bin
 export PATH=$GOBIN:$PATH
+export GOPRIVATE=gitee.com/oschina
 
 # llvm
 export PATH=/usr/local/llvm-15.0.0/bin:$PATH
