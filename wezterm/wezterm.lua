@@ -9,10 +9,16 @@ config.harfbuzz_features = { 'calt=0', 'clig=0', 'liga=0' }
 wezterm.on("gui-startup", function()
   local tab, pane, window = mux.spawn_window{
     args = { 'zsh', '-c', [[
-      if /opt/homebrew/bin/tmux has-session 2>/dev/null; then
-        exec /opt/homebrew/bin/tmux attach
+      TMUX_BIN=$(which tmux)
+      if [ -x "$TMUX_BIN" ]; then
+        if $TMUX_BIN has-session 2>/dev/null; then
+          exec $TMUX_BIN attach
+        else
+          exec $TMUX_BIN new-session
+        fi
       else
-        exec /opt/homebrew/bin/tmux new-session
+        echo "tmux not found"
+        exec $SHELL
       fi
     ]] },
   }
