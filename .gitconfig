@@ -1,0 +1,49 @@
+[user]
+    name = kugarocks
+    email = xxx@gmail.com
+
+#[includeIf "gitdir:~/osc/git/"]
+#    path = ~/osc/git/.gitconfig
+
+[alias]
+    pr = pull --rebase
+    br = branch -avv
+    ci = commit
+    co = checkout
+    cm = checkout master
+    mg = merge
+    st = status
+    l = log --color --graph --pretty=format:'%Cred%h%Creset -%C(bold yellow)%d%Creset %s %Cgreen(%cd) %C(bold blue)<%an>%Creset' --abbrev-commit
+    accept-ours = "!f() { files=\"$@\"; [ -z $files ] && files='.'; git checkout --ours -- $files; git add -u $files; }; f"
+    accept-theirs = "!f() { files=\"$@\"; [ -z $files ] && files='.'; git checkout --theirs -- $files; git add -u $files; }; f"
+    diffeol = diff --ignore-space-at-eol
+
+[core]
+    excludesfile = /Users/kuga/.gitignore_global
+    compression = 0
+
+[color]
+    branch = auto
+    diff = auto
+    status = auto
+
+[GitHub]
+    user = kugarocks
+
+[credential]
+    helper = osxkeychain
+
+[pull]
+    rebase = false
+
+[http]
+    postBuffer = 1048576000
+
+[https]
+    postBuffer = 1048576000
+
+[init]
+    defaultBranch = main
+
+#[url "https://mirror.ghproxy.com/https://github.com/"]
+#    insteadof = https://github.com/
