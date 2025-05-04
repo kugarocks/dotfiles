@@ -184,6 +184,8 @@ export LC_CTYPE=en_US.UTF-8
 
 # nvim
 export PATH=/Users/kuga/nvim/bin:$PATH
+
+# nvm
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
@@ -255,3 +257,7 @@ PATH="$PATH:/Applications/WezTerm.app/Contents/MacOS"
 # veee
 export HTTP_PROXY=http://localhost:15236
 export HTTPS_PROXY=http://localhost:15236
+
+# laravel
+export PATH="$HOME/.composer/vendor/bin:$PATH"
+
